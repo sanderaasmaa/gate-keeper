@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('App\\Http\\Controllers\\')->group(function () {
     Route::get('services', 'ServiceController@list');
-    Route::post('assign',
-        'CustomerServicePassController@assign');
+    Route::post('assign', 'CustomerServicePassController@assign');
+    Route::get('customer/{customerId}/access/{serviceId}', 'ServiceController@canAccess');
+    Route::patch('customer/{customerId}/access/{serviceId}', 'ServiceController@access');
 });
