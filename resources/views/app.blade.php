@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container" id="app">
-    <customers-table></customers-table>
+        <customers-table></customers-table>
 </div>
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
