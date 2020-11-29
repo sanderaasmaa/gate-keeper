@@ -14,7 +14,7 @@ class CustomerServicePassController extends Controller
         if (!is_object($customer)) {
             return $this->responseError('error_customer_not_found');
         }
-        $pass = ServicePass::find($request['service_pass']);
+        $pass = ServicePass::find($request['pass']);
         if (!is_object($pass)) {
             return $this->responseError('error_service_pass_not_found');
         }
