@@ -37,4 +37,17 @@ class ServiceController extends Controller {
         }
         return $this->response(null, 'access_denied', false);
     }
+
+    public function create(Request $request) {
+        $existing = Service::where('name', $request['name'])->first();
+        if (is_object($existing)) {
+            return $this->responseError('error_service_already_exists');
+        }
+        $service = new Service();
+        $service->name = $request['name'];
+        if (!$service->save()) {
+            return $this->responseError('error_unable_to_save_service');
+        }
+        return $this->response($service, 'new_service_added');
+    }
 }

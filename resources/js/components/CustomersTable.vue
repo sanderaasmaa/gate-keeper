@@ -21,12 +21,14 @@
                     <td>{{ customer.name }}</td>
                     <td>{{ customer.email }}</td>
                     <td>
-                        <div>
-                            <button v-for="service in services"
-                                    @click="useService(customer, service.id)"
-                                    type="button" class="btn btn-outline-primary">
-                                {{ service.name }}
-                            </button>
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button v-for="service in services"
+                                        @click="useService(customer, service.id)"
+                                        type="button" class="btn btn-outline-primary">
+                                    {{ service.name }}
+                                </button>
+                            </div>
                         </div>
                     </td>
                     <td>
@@ -41,7 +43,7 @@
                 </tbody>
             </table>
             <service-selector-modal :title="getModalTitle()">
-                <div v-if="Object.keys(activeCustomer).length" class="btn-toolbar" v-for="service in services">
+                <div v-if="Object.keys(activeCustomer).length" class="btn-toolbar mb-2" v-for="service in services">
                     <div class="btn-group">
                         <button v-for="pass in service.passes"
                                 @click="assignPass(pass)"

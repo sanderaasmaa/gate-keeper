@@ -20,8 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('App\\Http\\Controllers\\')->group(function () {
     Route::get('services', 'ServiceController@list');
-    Route::post('assign', 'CustomerServicePassController@assign');
-    Route::get('customers', 'CustomerController@list');
+    Route::post('services/create', 'ServiceController@create');
+
     Route::get('customer/{customerId}/access/{serviceId}', 'ServiceController@canAccess');
     Route::patch('customer/{customerId}/access/{serviceId}', 'ServiceController@access');
+
+    Route::post('service/{serviceId}/passes/create', 'ServicePassController@create');
+
+    Route::post('assign', 'CustomerServicePassController@assign');
+
+    Route::get('customers', 'CustomerController@list');
 });
