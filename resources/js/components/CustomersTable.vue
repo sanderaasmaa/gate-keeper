@@ -35,6 +35,12 @@ export default {
     created() {
         this.getServices()
         this.getCustomers()
+        this.$toast.error("I'm a toast!");
+
+// Or with options
+        this.$toast.success("My toast content", {
+            timeout: 2000
+        });
     },
     methods: {
         getCustomers() {
@@ -44,7 +50,13 @@ export default {
             axios.get('api/services').then(({data}) => (this.services = data.data));
         },
         useService(customer, service) {
-            axios.patch(`api/customer/${customer}/access/${service}`).then(({data}) => (console.log(data)));
+            axios.patch(`api/customer/${customer}/access/${service}`).then(({data}) => {
+                if (data.success) {
+                    this.$toast.success(data.message);
+                    return;
+                }
+                this.$toast.error(data.message);
+            });
         }
     }
 }
