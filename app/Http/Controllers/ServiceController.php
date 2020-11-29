@@ -10,10 +10,8 @@ use App\Models\Service;
 class ServiceController extends Controller {
     //
     public function list() {
-        $response = [
-            'services' => Service::with('passes')->get()
-        ];
-        return response()->json($response);
+        $response = Service::with('passes')->get();
+        return $this->response($response);
     }
 
     public function canAccess(Request $request, $customerId, $serviceId) {
@@ -35,8 +33,8 @@ class ServiceController extends Controller {
             return $this->responseError('error_service_not_found');
         }
         if ($service->grantAccess($customer, $options['check_only'])) {
-            return $this->response($options['access_msg']);
+            return $this->response(null, $options['access_msg']);
         }
-        return $this->response('access_denied', false);
+        return $this->response(null, 'access_denied', false);
     }
 }

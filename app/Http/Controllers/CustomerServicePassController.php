@@ -21,6 +21,6 @@ class CustomerServicePassController extends Controller
         if (!$customer->assignPass($pass)) {
             return $this->responseError('error_assigning_service_pass_to_user_failed');
         }
-        return $this->response('success_pass_assigned_to_customer');
+        return $this->response(null,'success_pass_assigned_to_customer');
     }
 }

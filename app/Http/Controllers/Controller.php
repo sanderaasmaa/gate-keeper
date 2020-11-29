@@ -20,7 +20,7 @@ class Controller extends BaseController
         return response($response, $code);
     }
 
-    public function response($message = '', $success = true, $data = '') {
+    public function response($data = '', $message = '', $success = true) {
         $response = [
             'success' => $success,
             'message' => $message,
