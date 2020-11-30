@@ -1,12 +1,12 @@
 <template>
-    <div class="container">
-        <div class="row">
+    <div class="container m-3">
+        <div class="row m-2">
             <div class="row">
                 <button @click="editService" type="button" class="btn btn-primary btn-lg mr-1">Edit services</button>
                 <button @click="editService" type="button" class="btn btn-secondary btn-lg">Edit service passes</button>
             </div>
         </div>
-        <div class="row">
+        <div class="row m-2">
             <table class="table">
                 <thead>
                 <tr>
@@ -54,6 +54,7 @@
                 </div>
                 <div v-else>
                     <h1>Under construction</h1>
+                    <p>Use api calls for now</p>
                 </div>
             </service-selector-modal>
         </div>
