@@ -18,7 +18,6 @@
 - update `.env` with database credentials and timezone
 - `php artisan key:generate`
 - `php artisan migrate`
-- `php artisan key:generate`
 - `php artisan db:seed`
 - `yarn install`
 - `yarn watch`
